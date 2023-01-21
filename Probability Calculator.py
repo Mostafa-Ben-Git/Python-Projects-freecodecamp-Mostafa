@@ -3,16 +3,17 @@ import copy
 
 
 class Hat:
-  def __init__(self, **kwargs) -> None:
-    self.contents = [key for key, value in kwargs.items() for _ in range(value)]
-  def draw(self, number):
-    if number > len(self.contents):
-      return self.contents
-    balls = [self.contents.pop(random.randrange(len(self.contents))) for _ in range(number)]
-    # for _ in range(number):
-    #   choice = random.randrange(len(self.contents))
-    #   balls.append(self.contents.pop(choice))
-    return balls
+    def __init__(self, **kwargs) -> None:
+        self.contents = [key for key, value in kwargs.items() for _ in range(value)]
+
+    def draw(self, number):
+        if number > len(self.contents):
+            return self.contents
+        balls = [
+            self.contents.pop(random.randrange(len(self.contents)))
+            for _ in range(number)
+        ]
+        return balls
 
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
